@@ -20,7 +20,7 @@ def main():
 
         response = requests.get(url, json=data)
         with open(f"{query}.json", "w") as f:
-            json.dump(response.json(), f)
+            json.dump(response.json(), f, ensure_ascii=False)
 
         print(f"Writed search results to ./{query}.json\n")
 
