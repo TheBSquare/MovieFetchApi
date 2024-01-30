@@ -19,10 +19,10 @@ def main():
         }
 
         response = requests.get(url, json=data)
-        with open(f"./search_results/{query}.json", "w") as f:
+        with open(f"{query}.json", "w") as f:
             json.dump(response.json(), f)
 
-        print(f"Writed search results to {query}.json\n")
+        print(f"Writed search results to ./{query}.json\n")
 
 
 if __name__ == '__main__':
