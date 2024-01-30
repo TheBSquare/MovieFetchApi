@@ -1,4 +1,10 @@
 
 from app.app import app
 
-app.run()
+
+def main():
+    app.run()
+
+
+if __name__ == '__main__':
+    main()
