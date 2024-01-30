@@ -1,12 +1,10 @@
 
-import requests
-
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from flask_expects_json import expects_json
 from flask_cors import CORS
 
 from .scheme import SEARCH_SCHEMA, DETAILS_SCHEMA, STREAM_SCHEMA
-from dtypes.response import OkResponse, ErrResponse
+from dtypes.response import ErrResponse
 from dtypes.search import to_search
 from dtypes.source import to_source
 
