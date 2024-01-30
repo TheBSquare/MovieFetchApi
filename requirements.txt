@@ -1,2 +1,5 @@
 flask
 requests
+flask-expects-json
+Flask-Cors
+loguru
