@@ -61,7 +61,6 @@ class Jsonified(BaseJsonifed):
 
     def update(self, key: str, value: Any) -> None:
         if key not in self.__dict__:
-            #raise KeyError(f"Cant find key with name: {key} in object: {self}")
             return
 
         elif isinstance(self.__dict__[key], list):
