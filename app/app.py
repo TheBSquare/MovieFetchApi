@@ -1,11 +1,13 @@
 
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_expects_json import expects_json
 from flask_cors import CORS
 
 from .scheme import SEARCH_SCHEMA, DETAILS_SCHEMA, STREAM_SCHEMA
-from dtypes.response import ErrResponse
-from dtypes.search import to_search
+from utils import get_class_children
+from dtypes.response import ErrResponse, OkResponse
+from dtypes.search import to_search, BaseSearch
+import dtypes.search
 from dtypes.source import to_source
 
 
@@ -38,6 +40,15 @@ def handle_search():
 
     response = search.filter()
     return response.to_json()
+
+
+@app.route("/search/sources")
+def handle_search_sources():
+    try:
+        return OkResponse(data=[i.source.name for i in get_class_children(BaseSearch, dtypes.search.search)]).to_json()
+
+    except Exception as err:
+        return ErrResponse(description=str(err))
 
 
 @app.route("/details")
